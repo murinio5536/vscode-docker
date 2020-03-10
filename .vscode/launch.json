@@ -3,6 +3,145 @@
 	"version": "0.1.0",
 	"configurations": [
 		{
+			"name": ".NET Core Attach",
+			"type": "coreclr",
+			"request": "attach",
+			"processId": "${command:pickRemoteProcess}",
+			"pipeTransport": {
+				"pipeCwd": "${workspaceFolder}",
+				"pipeProgram": "enter the fully qualified path for the pipe program name, for example '/usr/bin/ssh'",
+				"pipeArgs": [],
+				"debuggerPath": "enter the path for the debugger on the target machine, for example ~/vsdbg/vsdbg"
+			}
+		},
+		{
+			"name": ".NET Core Attach",
+			"type": "coreclr",
+			"request": "attach",
+			"processId": "${command:pickProcess}"
+		},
+		{
+			"name": "(gdb) Dołącz",
+			"type": "cppdbg",
+			"request": "attach",
+			"program": "wprowadź nazwę programu, na przykład ${workspaceFolder}/a.exe",
+			"processId": "${command:pickProcess}",
+			"MIMode": "gdb",
+			"miDebuggerPath": "/path/to/gdb",
+			"setupCommands": [
+				{
+					"description": "Włącz formatowanie kodu dla gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		},
+		{
+			"name": "(gdb) Program Bash w systemie Windows — dołączanie",
+			"type": "cppdbg",
+			"request": "attach",
+			"program": "wprowadź nazwę programu, na przykład ${workspaceFolder}/a.exe",
+			"processId": "${command:pickRemoteProcess}",
+			"pipeTransport": {
+				"debuggerPath": "/usr/bin/gdb",
+				"pipeProgram": "${env:windir}\\system32\\bash.exe",
+				"pipeArgs": ["-c"],
+				"pipeCwd": ""
+			},
+			"setupCommands": [
+				{
+					"description": "Włącz formatowanie kodu dla gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		},
+		{
+			"name": "(gdb) Dołącz",
+			"type": "cppdbg",
+			"request": "attach",
+			"program": "wprowadź nazwę programu, na przykład ${workspaceFolder}/a.exe",
+			"processId": "${command:pickProcess}",
+			"MIMode": "gdb",
+			"miDebuggerPath": "/path/to/gdb",
+			"setupCommands": [
+				{
+					"description": "Włącz formatowanie kodu dla gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		},
+		{
+			"name": ".NET Core Attach",
+			"type": "coreclr",
+			"request": "attach",
+			"processId": "${command:pickProcess}"
+		},
+
+		{
+			"type": "android",
+			"request": "launch",
+			"name": "Launch App",
+			"appSrcRoot": "${workspaceRoot}/app/src/main",
+			"apkFile": "${workspaceRoot}/app/build/outputs/apk/debug/app-debug.apk",
+			"adbPort": 5037
+		},
+		{
+			"name": ".NET Core Launch (web)",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "build",
+			"program": "${workspaceFolder}/bin/Debug/<target-framework>/<project-name.dll>",
+			"args": [],
+			"cwd": "${workspaceFolder}",
+			"stopAtEntry": false,
+			"serverReadyAction": {
+				"action": "openExternally",
+				"pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
+			},
+			"env": {
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			},
+			"sourceFileMap": {
+				"/Views": "${workspaceFolder}/Views"
+			}
+		},
+
+		{
+			"name": ".NET Core Attach",
+			"type": "coreclr",
+			"request": "attach",
+			"processId": "${command:pickProcess}"
+		},
+
+		{
+			"name": ".NET Core Attach",
+			"type": "coreclr",
+			"request": "attach",
+			"processId": "${command:pickProcess}"
+		},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		{
 			"type": "bashdb",
 			"request": "launch",
 			"name": "Bash-Debug (hardcoded script name)",
